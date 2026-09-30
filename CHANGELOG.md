@@ -1,5 +1,12 @@
 # Historial de versiones
 
+## 2.4.2 — 29/09/2026
+
+- **Mis programas**: corregido el error «startfile() argument 'arguments' must be str, not
+  None» de la 2.4.1, que impedía abrir los programas cuyo acceso directo no lleva argumentos
+  (INPA, VCDS…). Los que sí los llevan (CLIP) ya abrían.
+- Nuevo modo `--lanzar` para probar un mosaico desde la línea de órdenes y ver el error exacto.
+
 ## 2.4.1 — 29/09/2026
 
 - **Arranque 3-4 veces más rápido**: el programa pasa de un exe único (que descomprimía
