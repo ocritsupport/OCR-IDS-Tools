@@ -1,5 +1,14 @@
 # Historial de versiones
 
+## 2.4.3 — 01/10/2026
+
+- **Pantalla de inicio**: el logo de OCR IDS Tools aparece de fondo, difuminado y muy tenue,
+  detrás de los cuadros (en los dos temas).
+- **Cluster Editor** al día con el original del 01/10: avisos del asistente de clonado para el
+  cuadro 1J5 920 846 C (FULL FIS), nota del testigo del cinturón en la codificación e idioma
+  del MFA/FIS en el panel del vehículo.
+- Primera versión que llega por el **canal de actualizaciones** (la 2.4.2 debe ofrecerla sola).
+
 ## 2.4.2 — 29/09/2026
 
 - **Mis programas**: corregido el error «startfile() argument 'arguments' must be str, not
