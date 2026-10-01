@@ -1,5 +1,11 @@
 # Historial de versiones
 
+## 2.4.4 — 01/10/2026
+
+- **Actualizaciones**: un «Canal» guardado en blanco en Ajustes anulaba la dirección de fábrica y
+  el programa no buscaba nunca (así se quedó la 2.4.2 del taller). Ahora vacío = canal de
+  fábrica, Ajustes lo muestra, y guardar en blanco o con la de fábrica no deja nada grabado.
+
 ## 2.4.3 — 01/10/2026
 
 - **Pantalla de inicio**: el logo de OCR IDS Tools aparece de fondo, difuminado y muy tenue,
