@@ -1,5 +1,12 @@
 # Historial de versiones
 
+## 2.4.5 — 01/10/2026
+
+- **Actualizaciones**: en PCs cuyo almacén de certificados de Windows no tiene aún el emisor de
+  GitHub, buscar actualizaciones fallaba con «CERTIFICATE_VERIFY_FAILED». El programa lleva ahora
+  su propio paquete de raíces (certifi) además de las de Windows. La verificación no se desactiva.
+- `--diagnostico` comprueba también si el canal de fábrica es alcanzable desde ese PC.
+
 ## 2.4.4 — 01/10/2026
 
 - **Actualizaciones**: un «Canal» guardado en blanco en Ajustes anulaba la dirección de fábrica y
