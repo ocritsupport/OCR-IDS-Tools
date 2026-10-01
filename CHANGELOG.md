@@ -1,5 +1,9 @@
 # Historial de versiones
 
+## 2.4.6 — 01/10/2026
+
+- **Pantalla de inicio**: el logo de fondo, un poco más marcado (16 % en claro, 22 % en oscuro).
+
 ## 2.4.5 — 01/10/2026
 
 - **Actualizaciones**: en PCs cuyo almacén de certificados de Windows no tiene aún el emisor de
