@@ -1,5 +1,30 @@
 # Historial de versiones
 
+## 2.4.7 — 03/10/2026
+
+- **Batería y tensión en la cabecera**: arriba a la derecha, la batería del portátil (porcentaje,
+  rayo si carga; en un PC de sobremesa no aparece) y la tensión del coche por OBD. Verde, ámbar
+  o rojo según el nivel, con el aviso de no programar ni grabar centralitas con la batería
+  baja. La tensión sale del adaptador (ELM327 `ATRV`, J2534) o, con cable KKL, del PID 42 de
+  la centralita. Se lee cada 5 s solo si el cable está libre (nunca a la vez que los datos en
+  vivo). Sin conexión muestra «— V»; pulsándola se abre la conexión.
+- **Cluster Editor al día (03/10)**: lectura y grabación del cuadro mucho más rápidas, con
+  kw1281test compilado por nosotros (reloj de Windows a 1 ms, sin pausas de arranque y
+  grabación en una sola conexión que solo reescribe lo que cambia). **Sin probar en el coche.**
+- **Datos en vivo con gráfica**: debajo de la tabla, cada parámetro a su propia escala, con
+  último valor y mínimo/máximo en la leyenda, ocultar pulsando en la leyenda y lectura de
+  valores al pasar el ratón. En vivo enseña el último minuto.
+- **Abrir CSV…** en Datos en vivo: lee registros de este programa, de VCDS (un TIME por grupo,
+  columna Marker ignorada) y de ME7Logger/NefMoto o cualquier tabla con una fila TIME.
+  El CSV exportado lleva ahora la unidad en una cuarta columna.
+- **Cluster Editor al día (02/10)**: con un cable KKL de chip FTDI, kw1281test se abre por
+  acceso directo D2XX (latencia 2 ms en vez de los 16 ms del COM virtual: cada byte de
+  KW1281 espera ese temporizador, así que las lecturas de EEPROM van bastante más rápidas).
+  El selector de puerto ofrece primero el acceso rápido y después el COM; si el rápido no
+  abre el cable, se repite por el COM solo. El escaneo de centralitas reintenta a 9600
+  baudios las que contestan pero no sincronizan a 10400 (módulo de confort y otras).
+  Ideas tomadas de KKL Kombajn 4 (Ch4ist0). **Sin probar aún con cable real.**
+
 ## 2.4.6 — 01/10/2026
 
 - **Pantalla de inicio**: el logo de fondo, un poco más marcado (16 % en claro, 22 % en oscuro).
