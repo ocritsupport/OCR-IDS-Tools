@@ -1,5 +1,21 @@
 # Historial de versiones
 
+## 2.4.10 — 05/10/2026
+
+- **La prueba de actuadores del cuadro (agujas y testigos) se quedaba clavada en el primer paso**
+  («Tachometer»): ni «Siguiente» ni «Terminar» hacían nada y el cuadro se quedaba en modo prueba.
+  Mientras espera la tecla, el motor manda al cuadro un ACK tras otro (keep-alive) y escribe un
+  punto por cada uno, sin salto de línea, varias veces por segundo; el lector de la pseudo-consola
+  encolaba una línea vacía por cada punto y el bucle, ocupado en vaciarlas, no llegaba nunca a
+  enviar las teclas. Ahora las teclas y el fin del proceso se miran en cada vuelta, los puntos no
+  generan líneas y «Terminar» corta el proceso a los 5 s si el motor no sale solo. Reproducido con
+  un programa .NET con la misma estructura y con el simulador de pruebas, que ahora también
+  escribe los puntos.
+- Los comandos interactivos del cuadro (bloques de medición en vivo y prueba de actuadores)
+  arrancan al instante: ConPTY preguntaba al «terminal» qué es (`ESC[c`) y, sin respuesta, se
+  quedaba 3 s parado antes de lanzar el motor. Se le contesta como un VT100.
+- Si el cuadro se quedó en modo prueba por la versión anterior: quitar y dar el contacto.
+
 ## 2.4.9 — 05/10/2026
 
 - **Las actualizaciones saltan solas.** Hasta ahora se comprobaban «una vez al día» y el día se
