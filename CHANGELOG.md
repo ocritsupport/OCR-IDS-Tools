@@ -1,5 +1,21 @@
 # Historial de versiones
 
+## 2.4.9 — 05/10/2026
+
+- **Las actualizaciones saltan solas.** Hasta ahora se comprobaban «una vez al día» y el día se
+  marcaba en la primera apertura: una versión publicada después no se ofrecía hasta el día siguiente,
+  y en el usuario del modo terminal (el programa no se reinicia nunca) no se ofrecía jamás: había que
+  ir a Ajustes → «Buscar ahora». Ahora se comprueba en cada arranque y cada 4 horas mientras siga
+  abierto (nunca dos veces en menos de 15 minutos). Ajustes enseña «Última comprobación automática»
+  con la hora y el resultado, también cuando falla por red.
+- Motor `kw1281test 1.0.2-ocr3`: si no puede crear `KW1281Test.log` en el directorio de trabajo, lo crea
+  en `%TEMP%` y, si tampoco, sigue solo por consola. Era la causa real del cuadro que «no se leía» en el
+  taller: en el usuario del **modo terminal** la app arranca como shell de Windows con el directorio de
+  trabajo en `System32`, el motor moría con `UnauthorizedAccessException` antes de hablar con el coche
+  (`⏱ DumpEeprom: 1.5 s`) y no quedaba ningún `.log`. La 2.4.8 ya lo evita desde la app (directorio de
+  trabajo fijo por usuario); esto es el cinturón por si el motor se lanza desde cualquier otro sitio.
+  Recordatorio: el instalador es por usuario, cada usuario de Windows tiene su copia y su versión.
+
 ## 2.4.8 — 05/10/2026
 
 - **Cluster Editor: red de seguridad para el motor rápido.** Un intento fallido en el taller con el
