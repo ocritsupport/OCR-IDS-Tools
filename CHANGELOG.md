@@ -1,5 +1,24 @@
 # Historial de versiones
 
+## 2.4.8 — 05/10/2026
+
+- **Cluster Editor: red de seguridad para el motor rápido.** Un intento fallido en el taller con el
+  846 C (al final el cable había pasado de COM4 a COM2 para VAG EEPROM Programmer y la app seguía
+  en COM4; con el puerto bueno la 2.4.7 lo lee) sirvió para añadir una protección que faltaba:
+  si un comando de **solo lectura** al cuadro
+  falla por comunicación, lo repite primero por el puerto COM (si iba por acceso directo D2XX, que
+  deja 2 ms entre bytes en vez de 16) y después en **modo compatible** del motor, que son los
+  tiempos de la versión original de kw1281test (los de hasta la 2.4.6). Lo que funciona se queda
+  puesto el resto de la sesión y el registro lo dice (`[modo compatible]` en la línea del comando y
+  «✔ Así ha funcionado…»). Los comandos que escriben y las demás centralitas no se repiten solos.
+- Motor `kw1281test 1.0.2-ocr2`: `KW1281TEST_COMPATIBLE=1` (reloj de Windows sin tocar) y
+  `KW1281TEST_R6=<ms>` (pausa entre bytes, 2 ms de serie) por variable de entorno. El `.csproj`
+  del motor ya va en git (el `.gitignore` original lo dejaba fuera).
+- **Registro de sesión del Cluster Editor** en `%LOCALAPPDATA%\OCR IDS Tools\registros\cluster_<fecha>.log`
+  (todo lo que pasa por el terminal, con hora) y kw1281test lanzado con esa carpeta como directorio de
+  trabajo, para que su `KW1281Test.log` esté siempre ahí. Motivo: el intento fallido del taller no dejó
+  ningún `.log` que encontrar (instalado, el directorio de trabajo dependía del acceso directo).
+
 ## 2.4.7 — 03/10/2026
 
 - **Batería y tensión en la cabecera**: arriba a la derecha, la batería del portátil (porcentaje,
