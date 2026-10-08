@@ -1,5 +1,49 @@
 # Historial de versiones
 
+## Sin publicar
+
+## 2.4.11 — 08/10/2026
+
+- **Cluster Editor: «Consultar cuadro» decía un SKC falso** («SKC según el cuadro: 00014»). El
+  analizador se quedaba con la última línea del terminal que contuviera «SKC», y desde la 2.4.8
+  esa línea es el cronómetro de la propia app («⏱ GetSKC: 14.0 s»). Solo vale ya la línea exacta
+  «SKC: nnnnn» de kw1281test; si no está, se dice que no se pudo extraer.
+- **Cluster Editor: el byte 0x10C pasa a contador vivo.** En el ensayo de clonado en banco con un
+  1J5 920 846 C (ROM VWK501MH 01.00) se grabó el valor que el propio cuadro tenía y la relectura
+  devolvió otro. Es el primer byte del bloque 0x10C-0x11B, los contadores del intervalo de servicio
+  (se ponen a cero con el reset de servicio y acumulan solos). Ya no dispara «NO COINCIDE».
+- Cluster Editor: tras una grabación verificada se avisa de **quitar y dar contacto**: el cuadro
+  lee el idioma (0x147) y los ajustes al arrancar. Comprobado en el 846 C: el FIS seguía en alemán
+  con 05 ya grabado hasta rearrancar.
+- Cluster Editor: la etiqueta ROM enseña la **versión completa** declarada por el cuadro tras
+  «Consultar cuadro» (antes solo la familia; la versión exacta es la que decide si un parche de
+  barrido de agujas es compatible).
+- Cluster Editor: averías 00779 (G17), 01321 (airbag sin comunicación) y 01336 (CAN confort por un
+  solo hilo) documentadas.
+
+- **Funciones rápidas VAG** (pantalla VAG y «Codificación y adaptaciones»): las recetas de
+  siempre por su nombre, para coches de línea K con el cable KKL. Cierre y confort
+  (centralita 46, o 35 con elevalunas manuales): autocierre al iniciar la marcha, apertura
+  al sacar la llave, confirmación de apertura y cierre con bocina o intermitentes, sonido de
+  la bocina de la alarma, emparejado de mandos y apertura selectiva o de todas las puertas.
+  Cuadro (17): idioma, corrección de consumo y avisos de cinturón, pastillas y
+  limpiaparabrisas. Reglas: **sin «Leer estado» no hay «Guardar»**, solo valores
+  documentados, una codificación que no esté en la tabla no se toca, y tras guardar **se
+  relee y se compara** (una centralita que contesta bien y no guarda queda en evidencia).
+  El confort se busca a 10400 y a 9600 baudios y se recuerda la velocidad que funcionó.
+  Cada receta enseña sus fuentes y lo que nos fiamos de ella; las cuatro confirmaciones
+  (canales 06-09) van marcadas como dudosas porque la página antigua de Ross-Tech las
+  numera 05-08. **Nada del 46/35 está probado todavía en un coche.**
+- **Guía por modelo VAG**: 114 modelos de VW, Audi, Seat/Cupra y Skoda con su generación de
+  diagnóstico (línea K, CAN de primera generación con TP2.0, UDS, UDS con SFD), el cable
+  que piden y lo que la aplicación puede y no puede hacer con ellos hoy. Buscador («golf 4»,
+  «leon 5f»), salto a la herramienta que toca y enlace a las recetas del modelo en
+  vag-coding.net. No conecta con nada: es para saberlo antes de enchufar.
+- De dónde sale: revisión de vag-coding.net del 06/10/2026 (unas 6.300 recetas para VCDS y
+  OBDeleven). No se copia su contenido: el catálogo es propio, contrastado entrada a entrada
+  con la wiki de Ross-Tech, y lo demás se enlaza. Detalle y pendientes en
+  `docs/HOJA_DE_RUTA_MULTIMARCA.md`, punto 7.
+
 ## 2.4.10 — 05/10/2026
 
 - **La prueba de actuadores del cuadro (agujas y testigos) se quedaba clavada en el primer paso**
